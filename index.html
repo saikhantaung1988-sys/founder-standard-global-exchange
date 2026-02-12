@@ -1,0 +1,139 @@
+
+
+<!DOCTYPE html>
+<html lang="my">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GODFATHER EDWARD</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="favicon.ico">
+ <script>
+  window.SUPABASE_URL =  'https://qonmwtjznyrfenikqffk.supabase.co';
+
+
+  window.SUPABASE_ANON_KEY =  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFvbm13dGp6bnlyZmVuaWtxZmZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3NDQ3NzEsImV4cCI6MjA4NjMyMDc3MX0.OgTzG55xr_zkK8pIRp_S4lPG4eTIHunqz5PP_EPEFrs';
+</script>
+
+</head>
+
+<body>
+
+
+
+  <div class="sidebar" role="navigation" aria-label="Admin sidebar">
+    <h2>GODFATHER EDWARD</h2>
+    <button type="button" class="nav-btn active" onclick="showTab('balance', this)"> <i class="fas fa-wallet"></i> Assets</button>
+    <button type="button" class="nav-btn" onclick="showTab('trading', this)"> <i class="fas fa-chart-line"></i> Trade </button>
+    <button type="button" class="nav-btn" onclick="showTab('chat', this)"> <i class="fas fa-comments"></i> Service</button>
+  </div>
+
+
+
+
+  <div class="main-content">
+    <!-- BALANCE TAB -->
+    <div id="tab-balance" class="tab-content active">
+      <div class="card">
+        <h3>Assets</h3>
+
+        <div class="input-group">
+          <label for="targetUID">UID</label>
+          <input id="targetUID" type="text" placeholder="Enter user UID (string)">
+        </div>
+
+        <div class="row gap-md mb-sm">
+          <button type="button" class="btn" onclick="checkUser()"> <i class="fas fa-search"></i>Check</button>
+        </div>
+
+        <hr class="divider">
+
+        <div class="input-group">
+          <label for="balanceValue">Balance Adjustment ($)</label>
+          <input id="balanceValue" type="number" placeholder="e.g. 500">
+        </div>
+
+        <div class="row gap-md mb-sm">
+          <button type="button" class="btn" onclick="adjustBalance('add')">Deposit</button>
+          <button type="button" class="btn" onclick="adjustBalance('sub')">Withdraw</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- TRADING TAB -->
+<div id="tab-trading" class="tab-content">
+  <div class="card">
+    <h3>Trade</h3>
+
+    <!-- GLOBAL CONTROL -->
+    <h4>Global </h4>
+    <div class="card card-soft">
+
+     <div class="row gap-md mb-sm">
+        <div>
+          <button class="btn" id="globalWinBtn" onclick="setGlobalMode('win')">WIN</button>
+          <button class="btn" id="globalLoseBtn" onclick="setGlobalMode('lose')">LOSE</button>
+        </div>
+        <input id="globalPercent" type="number" min="0" max="100" placeholder="% e.g. 5" style="width:120px;">
+        <button class="btn" onclick="applyGlobalTradeUI()">Apply Global</button>
+      </div>
+      <p id="globalStatus" style="margin-top:8px;">Current: —</p>
+    </div>
+
+   <hr class="divider">
+
+    <!-- FILTERED USER CONTROL -->
+    <h4>Fliter</h4>
+    <div class="card card-soft">
+
+     <div class="row gap-md mb-sm">
+        <input id="filterUIDInput" type="text" placeholder="Enter User ID">
+        <button class="btn" onclick="addFilteredUser()">Add User</button>
+      </div>
+
+      <div id="filteredUsersTable" style="margin-top:12px;">
+        <!-- rows injected by JS -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+    <!-- CHAT TAB -->
+    <div id="tab-chat" class="tab-content">
+      <div class="chat-wrapper card" style="padding:12px;">
+        <div class="chat-sidebar">
+          <div class="title">Service</div>
+          <div id="chat-user-list" aria-live="polite"></div>
+        </div>
+
+        <div class="chat-main">
+          <div id="chat-header-info" class="chat-main-header">Select a user to start</div>
+          <div id="admin-chat-display" class="chat-bubble-area" role="log" aria-live="polite"></div>
+
+          <div class="chat-input-wrapper">
+            <input id="admin-reply-input" type="text" placeholder="စာပြန်ရန်..." autocomplete="off">
+            <button type="button" class="chat-send-btn" onclick="sendAdminReply()"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/admin.js"></script>
+
+</body>
+</html>

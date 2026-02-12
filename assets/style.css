@@ -1,0 +1,319 @@
+
+
+
+   :root {
+  --bg:#0b0e11;
+  --panel:#0f141a;
+  --card:#1e2329;
+  --text:#eaecef;
+  --muted:#9aa4b2;
+  --line:#2b3139;
+ 
+  --green:#0ecb81;
+  --red:#f6465d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin:0;
+  font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  display:flex;
+  height:100vh;
+  overflow:hidden; /* main-content က scroll ယူမယ် */
+}
+
+/* Sidebar */
+.sidebar {
+  width:250px;
+  background:var(--panel);
+  padding:16px;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.sidebar h2 {
+  margin:0 0 8px 0;
+  color:var(--yellow);
+  text-align:center;
+  font-size:16px;
+  letter-spacing:.4px;
+}
+.nav-btn {
+  background:transparent;
+  border:1px solid transparent;
+  color:#9aa4b2;
+  text-align:left;
+  padding:10px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.15s ease;
+}
+.nav-btn:hover { background:#131922; }
+.nav-btn.active {
+  background:#131922;
+  border-color:var(--line);
+  color:var(--yellow);
+}
+
+/* Main content + scroll fix */
+.main-content {
+  flex:1;
+  padding:16px 18px 18px;
+  overflow-y:auto;       /* ✅ main scroll */
+  overscroll-behavior: contain;
+}
+
+/* Tabs */
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+
+/* Cards */
+.card {
+  background:var(--card);
+  padding:14px 14px 16px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  margin-bottom:12px;
+}
+.card h3, .card h4 { margin:0 0 8px 0; letter-spacing:.3px; }
+
+/* Inputs */
+label { display:block; color:var(--muted); margin-bottom:6px; font-size:12px; }
+input[type="text"], input[type="number"], select {
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #3a414c;
+  background:#0b0e11;
+  color:var(--text);
+  outline:none;
+}
+input::placeholder { color:#6b7280; }
+input:focus { border-color:#4b5563; }
+
+/* Buttons */
+.btn {
+  padding:9px 12px;
+  border-radius:10px;
+  border:1px solid transparent;
+  cursor:pointer;
+  font-weight:600;
+  background:#131922;
+  color:#cbd5e1;
+  transition:.15s ease;
+}
+.btn:hover { filter:brightness(1.05); }
+.btn-yellow { background:var(--yellow); color:#000; }
+.btn-green { background:var(--green); color:#0b0e11; }
+.btn-red { background:var(--red); color:#0b0e11; }
+
+/* Chat layout */
+.chat-wrapper {
+  display: flex;
+  gap: 10px;
+  height: 90vh;        /* reduce bottom empty */
+  min-height: 520px;
+  overflow: hidden;   /* wrapper no scroll */
+}
+
+/* Sidebar */
+.chat-sidebar {
+  width: 220px;
+  overflow-y: auto;
+  background: #0f141a;
+  border-radius: 14px;
+  padding: 8px;
+  border: 1px solid var(--line);
+}
+
+/* User items */
+.user-item {
+  padding: 9px 10px;
+  border-radius: 10px;
+  background: #131922;
+  color: var(--text);
+  margin-bottom: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-weight: 400;              /* regular */
+}
+.user-item:hover {
+  background: #171e2a;
+}
+.user-item.active {
+  border-color: #3a414c;         /* no yellow */
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+/* Chat main */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #0b0e11;
+}
+
+/* Header */
+.chat-main-header {
+  padding: 10px 12px;
+  background: #0f141a;
+  border-bottom: 1px solid var(--line);
+  font-weight: 500;              /* medium, not bold */
+  color: #cbd5e1;
+}
+
+/* Messages area */
+.chat-bubble-area {
+  flex: 1;
+  min-height: 0;                /* flex scroll fix */
+  overflow-y: auto;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Bubbles */
+.chat-msg {
+  max-width: 78%;
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;             /* regular */
+}
+.chat-msg.user {
+  align-self: flex-start;
+  background: #1f2530;
+  color: #e5e7eb;
+}
+.chat-msg.admin {
+  align-self: flex-end;
+  background: #1f2630;          /* no yellow */
+  color: #e5e7eb;
+  border: 1px solid #2b3139;
+}
+
+/* Input */
+.chat-input-wrapper {
+  padding: 10px;
+  background: #0f141a;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border-top: 1px solid var(--line);
+}
+.chat-input-wrapper input {
+  flex: 1;
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid #3a414c;
+  background: #0b0e11;
+  color: var(--text);
+  font-weight: 400;             /* regular */
+}
+
+/* Send button (no yellow) */
+.chat-send-btn {
+  width: 42px;
+  height: 38px;
+  border-radius: 10px;
+  background: #1f2630;          /* neutral dark */
+  border: 1px solid #2b3139;
+  color: #cbd5e1;
+  cursor: pointer;
+}
+.chat-send-btn:hover {
+  background: #262d38;
+}
+
+/* Trading page: filtered users list scroll */
+#filteredUsersTable {
+  max-height: 320px;          /* ✅ filtered list scroll */
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Subtle separators */
+hr { border:0; height:1px; background:var(--line); margin:12px 0; }
+
+/* Responsive */
+@media (max-width:768px) {
+  body { flex-direction:column; height:auto; }
+  .sidebar {
+    width:100%;
+    flex-direction:row;
+    gap:6px;
+    padding:8px;
+    overflow:auto;
+  }
+  .main-content { padding:12px; }
+  .chat-wrapper { flex-direction:column; height:90vh; min-height:520px; }
+  #filteredUsersTable { max-height: 45vh; }
+}
+
+.row { 
+  display: flex; 
+  align-items: center; 
+  flex-wrap: wrap;
+}
+
+.gap-xs { gap: 6px; }
+.gap-sm { gap: 8px; }
+.gap-md { gap: 10px; }
+.gap-lg { gap: 12px; }
+
+.mb-xs { margin-bottom: 6px; }
+.mb-sm { margin-bottom: 10px; }
+.mb-md { margin-bottom: 14px; }
+.mb-lg { margin-bottom: 18px; }
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: var(--line);
+  margin: 12px 0;
+  opacity: .9;
+}
+
+.card-soft {
+  background: linear-gradient(180deg, #111722, #0f141a);
+  border-color: var(--line);
+}
+
+/* optional: even flatter variant */
+.card-flat {
+  background: #0f141a;
+  border-color: #1f2630;
+}
+
+/* Default text lighter (not bold) */
+body, 
+.main-content, 
+.card, 
+.user-item, 
+.chat-msg, 
+.chat-input-wrapper input, 
+.status-pill {
+  font-weight: 400; /* Regular */
+}
+
+/* Medium weight for labels / small UI text */
+label, 
+.chat-main-header, 
+.chat-sidebar .title {
+  font-weight: 500; /* Medium */
+}
+
+/* Keep titles bold only */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
