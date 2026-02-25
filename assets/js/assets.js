@@ -1,9 +1,4 @@
 // assets.js
-const supabaseUrl = 'https://qonmwtjznyrfenikqffk.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFvbm13dGp6bnlyZmVuaWtxZmZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3NDQ3NzEsImV4cCI6MjA4NjMyMDc3MX0.OgTzG55xr_zkK8pIRp_S4lPG4eTIHunqz5PP_EPEFrs';
-
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
 // profile table name (မင်း project ထဲက table name ကို တိတိကျကျပြောင်း)
 const PROFILE_TABLE = 'profiles'; // ဥပမာ: profiles
 
